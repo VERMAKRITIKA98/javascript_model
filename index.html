@@ -1,0 +1,90 @@
+<!-- Enter your HTML code here -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Binary Calculator</title>
+        <style>
+            #body{
+    width: 33%;
+}
+#res{
+    background-color: lightgray;
+    height: 48px;
+    border: solid;
+    font-size: 20px;
+}
+#btn0, #btn1{
+    background-color: lightgreen;
+    color: brown;
+    width: 25%;
+    height: 36px;
+    font-size: 18px;
+    margin: 0px;
+    float: left;
+}
+#btnClr, #btnEql{
+    background-color: darkgreen;
+    color: white;
+    width: 25%;
+    height: 36px;
+    font-size: 18px;
+    margin: 0px;
+    float: left;
+}
+#btnSum, #btnSub, #btnMul, #btnDiv{
+    background-color: black;
+    color: red;
+    width: 25%;
+    height: 36px;
+    font-size: 18px;
+    margin: 0px;
+    float: left;
+}
+
+        </style>
+    </head>
+    <body id="body">
+        <script>
+            function reset(){
+    document.getElementById("res").innerHTML = " ";
+}
+function setzero(){
+    document.getElementById("res").innerHTML += "0";
+}
+function setone(){
+    document.getElementById("res").innerHTML += "1";
+}
+function add(){
+    document.getElementById('res').innerHTML +="+";
+}
+function subtract(){
+    document.getElementById('res').innerHTML +="-";
+}
+function multiply(){
+    document.getElementById('res').innerHTML +="*";
+}
+function division(){
+    document.getElementById('res').innerHTML +="/";
+}
+function showresult(){
+    let expr = res.innerHTML;
+    let [pre,post]=expr.split(/[+|\-|\*|\/]/).map(binary=>parseInt(parseInt(binary, 2).toString(10).trim()));
+    let sign=expr.match(/[+|\-|\*|\/]/)[0];
+    let result=eval(pre+sign+post);
+    document.getElementById("res").innerHTML = result.toString(2);
+}
+        </script>
+        <div id="res"></div>
+        <div id="btns">
+            <button id="btn0" onclick="setzero()">0</button>
+            <button id="btn1" onclick="setone()">1</button>
+            <button id="btnClr" onclick="reset()">C</button>
+            <button id="btnEql" onclick="showresult()">=</button>
+            <button id="btnSum" onclick="add()">+</button>
+            <button id="btnSub" onclick="subtract()">-</button>
+            <button id="btnMul" onclick="multiply()">*</button>
+            <button id="btnDiv" onclick="division()">/</button>
+        </div>
+    </body>
+</html>
